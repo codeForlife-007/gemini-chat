@@ -1,21 +1,20 @@
 import { useState } from "react";
 
-const ChatInput = () => {
+const ChatInput = ({ onSubmit }) => {
     const [question, setQuestion] = useState("");
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            const res = await fetch("http://localhost:8080/api/qna/");
-            const data = res.json();
-        } catch (err) {
-            console.err(err)
+        if (question.trim()) {
+            onSubmit(question);
+            setQuestion("");
         }
+        console.log("he")
     }
 
     return (
         <div className="container my-4">
-            <div onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="question">Ask a question</label>
                     <input type="text"
@@ -26,7 +25,7 @@ const ChatInput = () => {
                         onChange={(e) => setQuestion(e.target.value)} />
                 </div>
                 <button type="submit" className="btn btn-primary mt-2">Submit</button>
-            </div>
+            </form>
         </div>
     )
 }
