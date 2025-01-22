@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("/api/qna")
 public class AIController {
 
-    private QnaService qnAService;
+    private final QnaService qnAService;
+
+    public AIController(QnaService qnAService) {
+        this.qnAService = qnAService;
+    }
 
     @PostMapping("/")
     public ResponseEntity<String> askQuestion(@RequestBody Map<String, String> payload) {
