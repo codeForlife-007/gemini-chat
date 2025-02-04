@@ -9,7 +9,6 @@ const ChatInput = ({ onSubmit }) => {
             onSubmit(question);
             setQuestion("");
         }
-        console.log("he")
     }
 
     return (

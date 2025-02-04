@@ -29,7 +29,7 @@ function App() {
         <h1>Gemini ChatBot</h1>
       </header>
       <ChatInput onSubmit={handleQuestionSubmit} />
-        {loading && <h3>loading...</h3>}
+        {loading && <h3 className='content-center'>loading...</h3>}
         <ChatResponse response={response} />
     </div>
   )

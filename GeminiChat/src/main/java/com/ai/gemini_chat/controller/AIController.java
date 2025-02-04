@@ -1,5 +1,6 @@
-package com.ai.gemini_chat;
+package com.ai.gemini_chat.controller;
 
+import com.ai.gemini_chat.service.QnaService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,13 +12,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/qna")
+@AllArgsConstructor
 public class AIController {
 
     private final QnaService qnAService;
-
-    public AIController(QnaService qnAService) {
-        this.qnAService = qnAService;
-    }
 
     @PostMapping("/")
     public ResponseEntity<String> askQuestion(@RequestBody Map<String, String> payload) {
